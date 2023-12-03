@@ -9,7 +9,7 @@ spec:
     matchLabels:
       app: pod-new
   strategy:
-    type: ReCreate
+    type: Recreate
   template:
     metadata:
       labels:
