@@ -9,7 +9,11 @@ spec:
     matchLabels:
       app: pod-new
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+     maxSurge: 50%
+     maxunavailable: 50%
+  minReadySeconds: 30
   template:
     metadata:
       labels:
