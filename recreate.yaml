@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recreate
+  namespace: new-namespace
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pod-todo
+  strategy:
+    type: ReCreate
+  template:
+    metadata:
+      labels:
+        app: my-pod
+    spec:
+      containers:
+        - name: todo-list
+          image: luffsenpai/todo:REPLACE_TAG
+          ports:
+            - containerPort: 8080
